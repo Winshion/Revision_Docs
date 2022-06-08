@@ -232,7 +232,7 @@ EAT：Effective Access Time计算方法：
 
 * 当page fault发生的概率为$p$，内存访问时间为$m$时，
 
-* $EAT = p \times page\_fault\_time + (1-p)\times m$
+* $EAT = p \times page\_ fault\_ time + (1-p)\times m$
 
 脏数据位（Dirty）：当目前页面有修改时，将脏数据位置为1，代表该页已经被修改
 
