@@ -158,6 +158,34 @@ void P(Semaphore* S) {
 }
 ```
 
+使用信号灯实现有限缓冲区的生产者-消费者问题
+
+```cpp
+#define BUFSIZE 10
+int buffer[BUFSIZE];
+Semaphore mutex;    // value = 1
+Semaphore empty, full;
+empty->value = BUFSIZE;
+full->value = 0;
+
+void Producer(int pid) {
+    /* 生产一个产品 */
+    P(&empty);  //【注意首先P的是empty】
+    P(&mutex);
+    /* 放入缓冲区 */
+    V(&mutex);
+    V(&full);
+}
+
+void Consumer(int pid) {
+    P(&full);
+    P(&mutex);
+    /* 从缓冲区中取出一个产品 */
+    V(&mutex);
+    V(&empty);
+}
+```
+
 哲学家进餐问题：无法避免饥饿现象。
 
 【重要】读者-写者问题代码
