@@ -213,7 +213,7 @@ while (1) {
     P(&mutex);
     readcount--;
     if (readcount == 0)
-        P(&write);
+        V(&write);
     V(&mutex);
 }
 ```
