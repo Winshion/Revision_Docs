@@ -8,7 +8,7 @@
 
 冯诺依曼体系架构的完整描述：<u>计算机由运算单元、控制单元、输入、输出、存储器构成，其中以存储器为核心</u>。
 
-系统启动的表述：从外存中导入操作系统内核至内存，然后操作系统控制权被转移至基础环境。整个过程成为<u>bootstrap（boot）</u>。
+系统启动的表述：从外存中导入操作系统内核至内存，然后操作系统控制权被转移至基础环境。整个过程称为<u>bootstrap（boot）</u>。
 
 Windows XP以前的bootstrap程序：NTLDR；Vista之后的成为BOOTMGR；Linux/Unix系统的bootloader称为GRUB。
 
