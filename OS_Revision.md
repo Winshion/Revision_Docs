@@ -103,7 +103,7 @@ CPU调度KPI：CPU利用率、吞吐量、周转时间、等待时间、响应�
 
 解决竞争条件：
 
-* 硬件：使用test_and_set原语和swap原语【不满足<font color='red'>有限等待性</font>】
+* 硬件：使用test_and_set原语和swap原语
 
 * 软件：使用进程同步算法
 
