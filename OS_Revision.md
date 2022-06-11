@@ -133,7 +133,7 @@ while (1) { schedule(pid); }
 ```cpp
 class PCB {
     /* PCB Definition */
-}
+};
 class Semaphore {
     int value;
     PCB* queue;
