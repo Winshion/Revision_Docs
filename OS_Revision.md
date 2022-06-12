@@ -111,6 +111,8 @@ CPU调度KPI：CPU利用率、吞吐量、周转时间、等待时间、响应�
 
 【重要】Peterson算法
 
+<font color='red>注意：考试时给的是i和j，这里的代码不再适用，具体需要看PPT！</font>
+
 ```cpp
 int turn = 0;
 bool flag[2] = { false, false };
