@@ -1,10 +1,8 @@
-#### 第一章
-
-
+#### 第一章 导论
 
 操作系统发展流程：<u>手工操作、批处理、多道程序操作系统、分时操作系统、实时操作系统</u>。
 
-#### 第二章
+#### 第二章 计算机系统结构
 
 冯诺依曼体系架构的完整描述：<u>计算机由运算单元、控制单元、输入、输出、存储器构成，其中以存储器为核心</u>。
 
@@ -16,23 +14,31 @@ CPU访问外设通过<u>设备控制器</u>。
 
 CPU访问外设的方法有：<u>I/O端口号【独立编址】、内存映射I/O【统一编址】</u>。
 
-中断分为<u>硬件中断和软件中断</u>，其中软件中断又称为<u>异常</u>。
+独立编址：端口号位数较少、统一编址：端口号位数较多（X86中为8位16进制数）
+
+分清ISR/IRQ/IVT中的关系：IVT中存储ISR的入口地址，系统产生IRQ（中断请求号）查询IVT，获取系统的ISR。
+
+中断分为<u>硬件中断和软件中断</u>，其中软件中断又称为<u>异常</u>（SGI, Software Generated Interrupt），page fault是异常的一种形式。
 
 <font color='red'>陷入操作系统内核态的两种方式：<u>系统调用、特权指令</u>。</font>
 
-硬件保护的基本方式：<u>二态模式、特权指令分级、内存保护、CPU保护【通过定时器】</u>。
+硬件保护的基本方式：<u>二态模式、特权指令分级、内存保护【基址+限制】、CPU保护【通过定时器】</u>。
 
-系统调用：操作系统和用户程序之间的接口，操作系统为用户提供服务的最小功能单位，用户使用<u>API</u>编写程序。
+系统调用：操作系统和用户程序之间的接口，操作系统为用户（应用程序）提供服务的最小功能单位，用户使用<u>API</u>编写程序。用户态翻转到内核态<b>只能通过</b>系统调用进行。
 
-#### 第三章
+#### 第三章 操作系统体系结构
 
 操作系统结构分为<u>简单结构（DOS、UNIX）、层次结构（THE、IBM OS/2）、微内核（Windows、Mach）、宏内核（Linux）</u>。
 
-操作系统设计的用户目标：<u>Convenient to use, easy  to learn, reliable, safe and fast</u>；系统目标：<u>Easy to design, implement and maintain, reliable, flexible, error-free and efficient.</u>
+模块结构与微内核结构的区别：模块结构所有模块都在<b>内核态</b>，而微内核结构中有的系统模块位于<b>用户态</b>。
+
+操作系统设计的用户目标：<u>Convenient to use, easy  to learn, reliable, safe and fast</u>；系统目标：<u>Easy to design, implement and maintain, reliable, flexible, error-free and efficient.</u> 二者对立统一。
 
 操作系统设计原则：策略（做什么）与机制（怎么做）分离。
 
-#### 第四章
+API(Application Program Interface)：系统调用会被封装为API函数，是用户态翻转进入内核态的通用接口。
+
+#### 第四章 进程管理
 
 进程包括<u>代码、数据、堆栈和堆</u>，是正在运行的程序或任务的抽象。
 
@@ -40,7 +46,7 @@ CPU访问外设的方法有：<u>I/O端口号【独立编址】、内存映射I/
 
 非抢占性：running->terminated，running->waiting；抢占性：running->ready，new->ready。
 
-进程控制块：保存<u>进程号、进程状态、程序指针、I/O控制信息、内存管理信息、CPU寄存器(最重要)、CPU调度信息、记账信息（Accounting info, 翻译得不好）</u>
+进程控制块（PCB, Process Control Block）：保存<u>进程号、进程状态、程序指针、I/O控制信息、内存管理信息、CPU寄存器【最重要】、CPU调度信息、记账信息（Accounting info, 翻译得不好）</u>
 
 上下文切换：指CPU切换到另一个进程时，保存当前进程状态，并恢复另一进程状态的过程。
 
